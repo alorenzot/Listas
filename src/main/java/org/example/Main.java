@@ -9,5 +9,7 @@ public class Main {
         lista.addHead(1);
 
         System.out.println(lista);
+
+        //hacer addtail
     }
 }
