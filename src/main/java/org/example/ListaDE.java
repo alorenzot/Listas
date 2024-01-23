@@ -1,62 +1,67 @@
 package org.example;
 
-public class ListaDE {
+public class ListaDE<E> {
     private int size;
     private Nodo head;
     private Nodo tail;
 
-    public void addHead(int num){
-        Nodo nodo = new Nodo(num);
-        if (size == 0) {
+    public void addHead(E num){
+        Nodo<E> nodo = new Nodo<E>(num);
+        if (size == 0 || head==null) {
             tail = nodo;
         } else {
-            nodo.setNext(head);
-            nodo.setPrev(null);
-            head.setPrev(nodo);
+            nodo.next=head;
+            head.prev=nodo;
         }
         head = nodo;
         size++;
     }
+    public void addTail(E num){
+        Nodo<E> nodo = new Nodo<E>(num);
+        if (size == 0) {
+            head = nodo;
+        } else {
+            nodo.prev=tail;
+            tail.next=nodo;
+        }
+        tail = nodo;
+        size++;
+    }
+
+
     @Override
     public String toString() {
         Nodo n = head;
         String aux = "Size: " + size + "\nValues: ";
 
         while (n != null) {
-
             aux += n.info + " ";
-
             n = n.next;
-
         }
-
         aux+="\nValues: ";
 
         n=tail;
         while (n != null) {
-
             aux += n.info + " ";
-
             n = n.prev;
-
         }
 
         return aux;
     }
 
 
-    private class Nodo{
-        private int info;
+    private class Nodo<E>{
+        private E info;
         private Nodo next;
         private Nodo prev;
 
-        public Nodo(int info) {
+        public Nodo(E info) {
             this.info = info;
             next=null;
             prev=null;
         }
 
-        public int getInfo() {
+        public E getInfo() {
             return info;
         }
 

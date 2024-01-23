@@ -15,9 +15,11 @@ public class Main {
 //        System.out.println(lista);
 
         ListaDE listaDE = new ListaDE();
+        listaDE.addTail(4);
         listaDE.addHead(3);
         listaDE.addHead(2);
         listaDE.addHead(1);
+        listaDE.addTail(5);
 
         System.out.println(listaDE);
 
