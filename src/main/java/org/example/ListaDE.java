@@ -6,7 +6,16 @@ public class ListaDE {
     private Nodo tail;
 
     public void addHead(int num){
-
+        Nodo nodo = new Nodo(num);
+        if (size == 0) {
+            tail = nodo;
+        } else {
+            nodo.setNext(head);
+            nodo.setPrev(null);
+            head.setPrev(nodo);
+        }
+        head = nodo;
+        size++;
     }
     @Override
     public String toString() {
@@ -36,13 +45,6 @@ public class ListaDE {
     }
 
 
-
-
-
-
-
-
-
     private class Nodo{
         private int info;
         private Nodo next;
@@ -52,6 +54,26 @@ public class ListaDE {
             this.info = info;
             next=null;
             prev=null;
+        }
+
+        public int getInfo() {
+            return info;
+        }
+
+        public Nodo getNext() {
+            return next;
+        }
+
+        public void setNext(Nodo next) {
+            this.next = next;
+        }
+
+        public Nodo getPrev() {
+            return prev;
+        }
+
+        public void setPrev(Nodo prev) {
+            this.prev = prev;
         }
 
         @Override
